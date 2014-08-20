@@ -1,0 +1,58 @@
+<ion-view title="个人" class="me-content">
+    <ion-nav-buttons side="right">
+        <button class="button button-icon icon ion-more" ng-click="more($event)"></button>
+    </ion-nav-buttons>
+    <ion-content class="has-header">
+
+        <div class="row basic-info">
+            <div class="col col-25">
+                <img src="img/male.gif" alt="..." class="img-circle avatar">
+            </div>
+            <div class="col col-75 basic-info-desp">
+                <strong>yhaoao</strong>
+                </br>
+                <i>hello world</i>
+            </div>
+        </div>
+        <div class="list bouns-info">
+            <label class="item item-input">
+                <span class="input-label">年龄</span>
+                <input type="text">
+            </label>
+            <label class="item item-input">
+                <span class="input-label">性别</span>
+                <input type="password">
+            </label>
+            <label class="item item-input">
+                <span class="input-label">常出没地</span>
+                <input type="password">
+            </label>
+            <label class="item item-input">
+                <span class="input-label">注册时间</span>
+                <input type="password">
+            </label>
+        </div>
+
+    </ion-content>
+</ion-view>
+<script id="my-popover.html" type="text/ng-template">
+  <ion-popover-view>
+      	<ul class="list">
+      		<li class="item">
+		    	发起话题
+		    </li>
+		    <li class="item">
+		     	参与话题
+		    </li>
+		    <li class="item">
+		     	设置
+		    </li>
+		    <li class="item">
+		    	意见反馈
+		    </li>
+		    <li class="item">
+		     	退出
+		    </li>
+		</ul>
+  </ion-popover-view>
+</script>
