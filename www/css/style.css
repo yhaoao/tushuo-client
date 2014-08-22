@@ -49,3 +49,18 @@
   width: 100%;
   height: 100%;
 }
+
+.register-content .item,.login-content .item{
+  border-left: none;
+  border-right: none;
+}
+
+
+.register-content .item:first-child,.login-content .item:first-child{
+  border-top: none;
+}
+
+.padding-horizontal{
+  padding-left: 0.5em;
+  padding-right: 0.5em;
+}

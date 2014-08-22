@@ -37,22 +37,25 @@
 </ion-view>
 <script id="my-popover.html" type="text/ng-template">
   <ion-popover-view>
-      	<ul class="list">
-      		<li class="item">
-		    	发起话题
-		    </li>
-		    <li class="item">
-		     	参与话题
-		    </li>
-		    <li class="item">
-		     	设置
-		    </li>
-		    <li class="item">
-		    	意见反馈
-		    </li>
-		    <li class="item">
-		     	退出
-		    </li>
-		</ul>
+    <ion-content scroll="false">
+        <div class="list">
+            <a class="item" href="http://learn.ionicframework.com/" target="_blank">
+              发起话题
+            </a>
+            <a class="item" href="http://ionicframework.com/docs/" target="_blank">
+              参与话题
+            </a>
+            <a class="item" href="http://showcase.ionicframework.com/" target="_blank">
+              设置
+            </a>
+            <a class="item" href="http://ionicframework.com/submit-issue/" target="_blank">
+              意见反馈
+            </a>
+            <a class="item" ng-click="logout()">
+              退出
+            </a>
+        </div>
+    </ion-content>
+              
   </ion-popover-view>
 </script>

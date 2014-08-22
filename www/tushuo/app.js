@@ -1,4 +1,4 @@
-angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
+angular.module('starter', ['ionic', 'starter.controllers', 'starter.services','LocalForageModule'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -14,17 +14,37 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
 .config(function($stateProvider, $urlRouterProvider) {
   $stateProvider
 
+    .state('login', {
+      url: '/login',
+      templateUrl: 'tushuo/auth/login.html',
+      controller: 'LoginCtrl'
+    })
+
+    .state('registerFirst', {
+      url: '/register-first',
+      templateUrl: 'tushuo/auth/register-first.html',
+      controller: 'RegisterCtrl'
+    })
+
+    .state('registerSecond', {
+      url: '/register-second',
+      templateUrl: 'tushuo/auth/register-second.html',
+      controller: 'RegisterCtrl'
+    })
+
+
+
     .state('tab', {
       url: "/tab",
       abstract: true,
-      templateUrl: "app/tabs.html"
+      templateUrl: "tushuo/tabs.html"
     })
 
     .state('tab.main', {
       url: '/main',
       views: {
         'tab-main': {
-          templateUrl: 'app/main/tab-main.html',
+          templateUrl: 'tushuo/main/tab-main.html',
           controller: 'MainCtrl'
         }
       }
@@ -34,7 +54,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
       url: '/pub',
       views: {
         'tab-pub': {
-          templateUrl: 'app/pub/tab-pub.html',
+          templateUrl: 'tushuo/pub/tab-pub.html',
           controller: 'PubCtrl'
         }
       }
@@ -44,7 +64,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
       url: '/picture',
       views: {
         'tab-pub': {
-          templateUrl: 'app/pub/tab-pub-picture.html',
+          templateUrl: 'tushuo/pub/tab-pub-picture.html',
           controller: 'PubCtrl'
         }
       }
@@ -54,7 +74,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
       url: '/msg',
       views: {
         'tab-msg': {
-          templateUrl: 'app/msg/tab-msg.html',
+          templateUrl: 'tushuo/msg/tab-msg.html',
           controller: 'MsgCtrl'
         }
       }
@@ -64,7 +84,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
       url: '/me',
       views: {
         'tab-me': {
-          templateUrl: 'app/me/tab-me.html',
+          templateUrl: 'tushuo/me/tab-me.html',
           controller: 'MeCtrl'
         }
       }

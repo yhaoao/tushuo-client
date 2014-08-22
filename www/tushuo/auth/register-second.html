@@ -1,0 +1,27 @@
+<ion-view title="注册">
+
+    <ion-content class="has-header register-content" padding="false" scroll="false">
+        <div class="list">
+            <label class="item item-input  item-select">
+                <span class="input-label">性别</span>
+                <select ng-model="registerForm.gender">
+                    <option value="male" selected>男</option>
+                    <option value="female">女</option>
+                   
+                </select>
+            </label>
+            <label class="item item-input">
+                <span class="input-label">生日</span>
+                <input type="date" ng-model="registerForm.birthday">
+            </label>
+        </div>
+
+        <div class="padding-horizontal">
+            <button class="button button-block button-stable" ng-click="register()">
+                注册
+            </button>
+        </div>
+
+    </ion-content>
+
+</ion-view>
