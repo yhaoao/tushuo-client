@@ -28,27 +28,8 @@
   border-radius: 50%;
 }
 
-.me-content .basic-info{
-  background: url('/img/me-background.jpeg');
-  background-size: 100%;
-  padding-top: 60px;
-}
 
-.me-content .basic-info-desp{
-  padding-top:10px;
-  font-size: 1.1em;
-  color: white;
-}
 
-.me-content .bouns-info .input-label{
-  color: gray;
-
-}
-
-.me-content .avatar{
-  width: 100%;
-  height: 100%;
-}
 
 .register-content .item,.login-content .item{
   border-left: none;

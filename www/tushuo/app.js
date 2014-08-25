@@ -1,4 +1,8 @@
-angular.module('starter', ['ionic', 'starter.controllers', 'starter.services','LocalForageModule'])
+angular.module('starter', [
+  'ionic', 'starter.controllers', 
+  'starter.services',
+  'starter.filters',
+  'LocalForageModule'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -86,6 +90,16 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services','L
         'tab-me': {
           templateUrl: 'tushuo/me/tab-me.html',
           controller: 'MeCtrl'
+        }
+      }
+    })
+
+    .state('tab.editMe', {
+      url: '/edit-me',
+      views: {
+        'tab-me': {
+          templateUrl: 'tushuo/me/edit-me.html',
+          controller: 'EditMeCtrl'
         }
       }
     });

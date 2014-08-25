@@ -6,36 +6,36 @@
 
         <div class="row basic-info">
             <div class="col col-25">
-                <img src="img/male.gif" alt="..." class="img-circle avatar">
+                <img ng-src="{{user.avatar|avatar:user.gender}}" class="img-circle avatar" ng-click="editUserInfo()"></img>
             </div>
-            <div class="col col-75 basic-info-desp">
-                <strong>yhaoao</strong>
+            <div class="col col-75 basic-info-desp" >
+                <strong ng-click="editUserInfo()">{{user.username}}</strong>
                 </br>
-                <i>hello world</i>
+                <i ng-click="editUserInfo()">{{user.sign||'暂无签名'}}</i>
             </div>
         </div>
-        <div class="list bouns-info">
+        <div class="list bouns-info" ng-click="editUserInfo()">
             <label class="item item-input">
-                <span class="input-label">年龄</span>
-                <input type="text">
+                <span class="input-label" >年龄</span>
+                <div>{{user.birthday|age}}</div>
             </label>
             <label class="item item-input">
-                <span class="input-label">性别</span>
-                <input type="password">
+                <span class="input-label" >性别</span>
+                <div>{{user.gender|gender}}</div>
             </label>
             <label class="item item-input">
-                <span class="input-label">常出没地</span>
-                <input type="password">
+                <span class="input-label" >常出没地</span>
+                <div>{{user.site||'暂未填写'}}</div>
             </label>
             <label class="item item-input">
                 <span class="input-label">注册时间</span>
-                <input type="password">
+                <div>{{user.createAt|time}}</div>
             </label>
         </div>
 
     </ion-content>
 </ion-view>
-<script id="my-popover.html" type="text/ng-template">
+<script id="more-popover.html" type="text/ng-template">
   <ion-popover-view>
     <ion-content scroll="false">
         <div class="list">

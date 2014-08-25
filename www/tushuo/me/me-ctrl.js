@@ -1,9 +1,13 @@
 angular.module('starter.controllers.me', [])
 
-.controller('MeCtrl', function($scope, $ionicPopover, $state, Auth, Util) {
+.controller('MeCtrl', function($scope, $ionicPopover, $state, Auth, Util,User) {
+
+    User.getUser().then(function(user){ 
+        $scope.user=user;
+    });
 
 
-    $ionicPopover.fromTemplateUrl('my-popover.html', {
+    $ionicPopover.fromTemplateUrl('more-popover.html', {
         scope: $scope,
     }).then(function(popover) {
         $scope.popover = popover;
@@ -19,11 +23,13 @@ angular.module('starter.controllers.me', [])
             if (result.err !== 0) {
                 Util.toast(result.msg);
             } else {
-                Auth.setUnauth();
                 $scope.popover.hide();
                 $state.go('login');
             }
         });
-
     };
+
+    $scope.editUserInfo=function(){
+        $state.go('tab.editMe');
+    }
 });

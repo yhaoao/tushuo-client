@@ -1,10 +1,12 @@
 angular.module('starter.services.pub', [])
-	.factory('Pub', function() {
+	.factory('Pub', function($http) {
 		var Pub={
-			hello:function(){
-				alert('hello');
-			},
-			currentPub:{}
+			pubPost:function(post){
+				
+				$http.post('/post',post).then(function(result){
+					return result.data;
+				});
+			}
 		};
 
 		return Pub;

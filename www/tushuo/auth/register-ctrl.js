@@ -1,27 +1,28 @@
 angular.module('starter.controllers.register', [])
 
-.controller('RegisterCtrl', function($rootScope, $scope, $state, Auth, Util) {
+.controller('RegisterCtrl', function($rootScope, $scope, $state, Auth, Util, User) {
 	$scope.registerForm = Auth.registerUser;
 
 	$scope.register = function() {
-		var birthday = $scope.registerForm.birthday;
-		var gender = $scope.registerForm.gender;
-
-		alert(birthday);
-		alert(gender);
-
+		var username = Auth.registerUser.username ? Auth.registerUser.username : Auth.registerUser.email;
+		var email = Auth.registerUser.email;
+		var password = Auth.registerUser.password;
+		var birthday = Auth.registerUser.birthday;
+		var gender = Auth.registerUser.gender;
 
 		if (!birthday) {
 			Util.toast('请输入生日');
 		} else if (!gender) {
 			Util.toast('请输入性别');
 		} else {
-			Auth.register(username, email, password).then(function(result) {
+			Auth.register(username, email, gender, birthday, password).then(function(result) {
 				if (result.err !== 0) {
 					Util.toast(result.msg);
 				} else {
-					Auth.setAuth();
-					$state.go('tab.main');
+					User.setUser(result.data).then(function() {
+						Auth.setAuth();
+						$state.go('tab.main');
+					});
 				}
 			});
 		}

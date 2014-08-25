@@ -1,6 +1,6 @@
 angular.module('starter.controllers.login', [])
 
-.controller('LoginCtrl', function($rootScope, $scope, $location, $state, Auth, Util) {
+.controller('LoginCtrl', function($rootScope, $scope, $state, User, Auth, Util) {
 	$scope.loginForm = {};
 
 	$scope.login = function() {
@@ -16,8 +16,10 @@ angular.module('starter.controllers.login', [])
 				if (result.err !== 0) {
 					Util.toast(result.msg);
 				} else {
-					Auth.setAuth();
-					$state.go('tab.main');
+					User.setUser(result.data).then(function() {
+						Auth.setAuth();
+						$state.go('tab.main');
+					});
 				}
 			});
 		}
