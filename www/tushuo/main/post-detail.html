@@ -1,0 +1,41 @@
+<ion-view title="{{post.desp}}">
+    <ion-nav-buttons side="right">
+        <button class="button button-clear" ng-click="openCommentModel()">
+            评论
+        </button>
+    </ion-nav-buttons>
+    <ion-content class="has-header padding">
+        <div class="item item-avatar">
+            <img ng-src="{{post.authAvatar|avatar:'male'}}">
+            <h2>{{post.authName}}</h2>
+            <p>{{post.createAt|timeAgo}}</p>
+        </div>
+
+        <div class="item item-body">
+            <p>
+                {{post.desp}}
+            </p>
+            <p>
+                <a href="#" class="subdued">{{post.up}} 顶</a>
+                <a href="#" class="subdued">{{post.down}} 踩</a>
+                <a href="#" class="subdued">{{post.commentCount}} 评论</a>
+            </p>
+        </div>
+    </ion-content>
+</ion-view>
+<script id="my-modal.html" type="text/ng-template">
+    <ion-modal-view>
+        <ion-header-bar class="bar-dark">
+            <h1 class="title">{{post.desp}}</h1>
+            <button class="button button-clear" ng-click="closeCommentModel()">
+                关闭
+            </button>
+        </ion-header-bar>
+        <ion-content class="padding">
+            <textarea placeholder="请创建描述" class="topcoat-textarea" >
+            </textarea>
+            <button class="button button-block button-stable" ng-click="comment()">
+            发布</button>
+        </ion-content>
+    </ion-modal-view>
+</script>

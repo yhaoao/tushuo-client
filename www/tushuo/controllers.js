@@ -6,5 +6,8 @@ angular.module('starter.controllers', [
 	'starter.controllers.pub',
 	'starter.controllers.msg',
 	'starter.controllers.me',
+	'starter.controllers.feedback',
+	'starter.controllers.seetings',
+	'starter.controllers.postDetail',
 	'starter.controllers.editMe'
 ]);

@@ -17,6 +17,16 @@ angular.module('starter.controllers.me', [])
         $scope.popover.show($event);
     };
 
+    $scope.feedback=function(){
+        $scope.popover.hide();
+        $state.go('tab.feedback');
+    };
+
+    $scope.settings=function(){
+        $scope.popover.hide();
+        $state.go('tab.settings');
+    };
+
     $scope.logout = function() {
 
         Auth.logout().then(function(result) {

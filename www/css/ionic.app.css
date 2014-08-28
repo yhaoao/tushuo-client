@@ -7653,8 +7653,10 @@ a.button {
   -webkit-transition: none !important;
   transition: none !important; }
 
-.main-content .tabs-top .tabs {
-  top: 0; }
+.main-content {
+  background: #efefef; }
+  .main-content .tabs-top .tabs {
+    top: 0; }
 
 .me-content .basic-info {
   background: url('/img/me-background.jpeg');

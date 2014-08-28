@@ -36,8 +36,6 @@ angular.module('starter', [
       controller: 'RegisterCtrl'
     })
 
-
-
     .state('tab', {
       url: "/tab",
       abstract: true,
@@ -50,6 +48,16 @@ angular.module('starter', [
         'tab-main': {
           templateUrl: 'tushuo/main/tab-main.html',
           controller: 'MainCtrl'
+        }
+      }
+    })
+
+    .state('tab.postDetail', {
+      url: '/post-detail/:post',
+      views: {
+        'tab-main': {
+          templateUrl: 'tushuo/main/post-detail.html',
+          controller: 'PostDetailCtrl'
         }
       }
     })
@@ -88,7 +96,7 @@ angular.module('starter', [
       url: '/me',
       views: {
         'tab-me': {
-          templateUrl: 'tushuo/me/tab-me.html',
+          templateUrl: 'tushuo/me/me.html',
           controller: 'MeCtrl'
         }
       }
@@ -100,6 +108,26 @@ angular.module('starter', [
         'tab-me': {
           templateUrl: 'tushuo/me/edit-me.html',
           controller: 'EditMeCtrl'
+        }
+      }
+    })
+
+    .state('tab.settings', {
+      url: '/settings',
+      views: {
+        'tab-me': {
+          templateUrl: 'tushuo/me/settings.html',
+          controller: 'EditMeCtrl'
+        }
+      }
+    })
+
+    .state('tab.feedback', {
+      url: '/feedback',
+      views: {
+        'tab-me': {
+          templateUrl: 'tushuo/me/feedback.html',
+          controller: 'FeedbackCtrl'
         }
       }
     });

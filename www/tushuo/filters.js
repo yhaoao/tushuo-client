@@ -3,5 +3,6 @@ angular.module('starter.filters', [
 	'starter.filters.time',
 	'starter.filters.age',
 	'starter.filters.gender',
-	'starter.filters.avatar'
+	'starter.filters.avatar',
+	'starter.filters.timeAgo'
 ]);
