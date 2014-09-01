@@ -3,5 +3,6 @@ angular.module('starter.services', [
 	'starter.services.auth',
 	'starter.services.user',
 	'starter.services.post',
-	'starter.services.feedback'
+	'starter.services.feedback',
+	'starter.services.message'
 ]);

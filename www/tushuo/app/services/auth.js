@@ -21,6 +21,7 @@ angular.module('starter.services.auth', [])
 			};
 
 			return $http.post('/register', registerForm).then(function(result) {
+				Auth.setAuth();
 				return result.data;
 			});
 		},
@@ -30,6 +31,7 @@ angular.module('starter.services.auth', [])
 				password: password
 			};
 			return $http.post('/login', loginForm).then(function(result) {
+				Auth.setAuth();
 				return result.data;
 			});
 		},

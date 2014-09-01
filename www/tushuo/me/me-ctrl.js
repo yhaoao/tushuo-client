@@ -17,6 +17,16 @@ angular.module('starter.controllers.me', [])
         $scope.popover.show($event);
     };
 
+    $scope.myPost=function(){
+        $scope.popover.hide();
+        $state.go('tab.myPost');
+    }
+
+    $scope.commentPost=function(){
+        $scope.popover.hide();
+        $state.go('tab.commentPost');
+    }
+
     $scope.feedback=function(){
         $scope.popover.hide();
         $state.go('tab.feedback');

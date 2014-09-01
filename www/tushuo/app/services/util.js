@@ -5,6 +5,7 @@ angular.module('starter.services.util', [])
 		toast:function(content){
 			$ionicLoading.show({
 				template:content,
+				noBackdrop: true,
 				duration:1000
 			});
 		}

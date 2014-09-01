@@ -13,14 +13,10 @@ angular.module('starter.controllers.login', [])
 			Util.toast('请输入密码');
 		} else {
 			Auth.login(email, password).then(function(result) {
-				if (result.err !== 0) {
-					Util.toast(result.msg);
-				} else {
-					User.setUser(result.data).then(function() {
-						Auth.setAuth();
-						$state.go('tab.main');
-					});
-				}
+				User.setUserId(result.data._id);
+				User.setUser(result.data).then(function() {
+					$state.go('tab.main');
+				});
 			});
 		}
 	}

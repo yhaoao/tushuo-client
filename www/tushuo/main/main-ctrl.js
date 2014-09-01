@@ -1,21 +1,45 @@
 angular.module('starter.controllers.main', [])
 
 .controller('MainCtrl', function($scope, $state, Post, Util) {
-	$scope.state = 'hot';
+	var updatePosts=function(state){
+		switch (state) {
+			case 'hotest':
+				return Post.getHotestPosts().then(function(posts) {
+					$scope.posts = posts;
+				});
+				break;
+			case 'latest':
+				return Post.getLatestPosts().then(function(posts) {
+					$scope.posts = posts;
+				});
+				break;
 
-	Post.getLatestPosts().then(function(posts) {
-		$scope.posts = posts;
-	});
-	$scope.changeState = function(state) {
-		$scope.state = state;
+			case 'nearby':
+				return Post.getNearbyPosts().then(function(posts) {
+					$scope.posts = posts;
+				});
+				break;
+		}
 	};
 
+	$scope.changeState = function(state) {
+		$scope.state = state;
+		updatePosts(state);
+	};
+
+	$scope.changeState('hotest');
+
 	$scope.refresh = function() {
-		Post.getLatestPosts().then(function(posts) {
-			$scope.posts = posts;
+		updatePosts($scope.state).then(function(){
 			$scope.$broadcast('scroll.refreshComplete');
 		});
 
+	};
+
+	$scope.userInfo = function(id) {
+		$state.go('tab.userInfo', {
+			id: id
+		});
 	};
 
 	$scope.up = function(id) {
@@ -47,9 +71,9 @@ angular.module('starter.controllers.main', [])
 		Post.setVoted(id);
 	};
 
-	$scope.comment = function(post) {
+	$scope.comment = function(id) {
 		$state.go('tab.postDetail', {
-			post: JSON.stringify(post)
+			id: id
 		});
 	};
 });

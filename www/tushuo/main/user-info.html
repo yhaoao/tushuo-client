@@ -1,0 +1,54 @@
+<ion-view title="{{post.desp}}">
+    <ion-content class="has-header me-content">
+        <div class="row basic-info">
+            <div class="col col-25">
+                <img ng-src="{{user.avatar|avatar:user.gender}}" class="img-circle avatar" ng-click="editUserInfo()"></img>
+            </div>
+            <div class="col col-75 basic-info-desp">
+                <strong ng-click="editUserInfo()">{{user.username}}</strong>
+                </br>
+                <i ng-click="editUserInfo()">{{user.sign||'暂无签名'}}</i>
+            </div>
+        </div>
+        <div class="list bouns-info" ng-click="editUserInfo()">
+            <label class="item item-input">
+                <span class="input-label">年龄</span>
+                <div>{{user.birthday|age}}</div>
+            </label>
+            <label class="item item-input">
+                <span class="input-label">性别</span>
+                <div>{{user.gender|gender}}</div>
+            </label>
+            <label class="item item-input">
+                <span class="input-label">常出没地</span>
+                <div>{{user.site||'暂未填写'}}</div>
+            </label>
+            <label class="item item-input">
+                <span class="input-label">注册时间</span>
+                <div>{{user.createAt|time}}</div>
+            </label>
+        </div>
+        <div class="padding-horizontal" ng-show="!isMe">
+        	<button class="button button-block button-stable" ng-click="openSendMessageModal()">
+	            小纸条
+	        </button>
+        </div>
+    </ion-content>
+</ion-view>
+
+<script id="send-message-modal.html" type="text/ng-template">
+    <ion-modal-view>
+        <ion-header-bar class="bar-dark">
+            <h1 class="title">{{post.desp}}</h1>
+            <button class="button button-clear icon ion-close" ng-click="closeSendMessageModal()">
+            </button>
+        </ion-header-bar>
+        <ion-content class="padding">
+            <textarea placeholder="请输入内容" class="topcoat-textarea" 
+            ng-model="messageForm.content">
+            </textarea>
+            <button class="button button-block button-stable" ng-click="sendMessage(messageForm.content)">
+            发送</button>
+        </ion-content>
+    </ion-modal-view>
+</script>

@@ -1,7 +1,7 @@
 <ion-view class="main-content" title="图说" hide-nav-bar="true">
     <div class="tabs-striped tabs-top tabs-background-dark tabs-color-light">
         <div class="tabs">
-            <a class="tab-item" ng-class="{active:state==='hot'}" ng-click="changeState('hot')" href="#">
+            <a class="tab-item" ng-class="{active:state==='hotest'}" ng-click="changeState('hotest')" href="#">
                 <strong>最热</strong>
             </a>
             <a class="tab-item" ng-class="{active:state==='latest'}" ng-click="changeState('latest')" href="#">
@@ -17,7 +17,7 @@
         </ion-refresher>
         <div class="list card" ng-repeat="post in posts">
 
-            <div class="item item-avatar">
+            <div class="item item-avatar" ng-click="userInfo(post.auth)">
                 <img ng-src="{{post.authAvatar|avatar:'male'}}">
                 <h2>{{post.authName}}</h2>
                 <p>{{post.createAt|timeAgo}}</p>
@@ -43,7 +43,7 @@
                     <i class="icon ion-thumbsdown"></i>
                     踩
                 </a>
-                <a class="tab-item" ng-click="comment(post)">
+                <a class="tab-item" ng-click="comment(post._id)">
                     <i class="icon ion-chatbox"></i>
                     评论
                 </a>

@@ -1,38 +1,45 @@
 <ion-view title="{{post.desp}}">
     <ion-nav-buttons side="right">
-        <button class="button button-clear" ng-click="openCommentModel()">
-            评论
-        </button>
+        <button class="button button-clear icon ion-edit" 
+        ng-click="openCommentModel()">
+    </button>
     </ion-nav-buttons>
     <ion-content class="has-header padding">
-        <div class="item item-avatar">
-            <img ng-src="{{post.authAvatar|avatar:'male'}}">
-            <h2>{{post.authName}}</h2>
-            <p>{{post.createAt|timeAgo}}</p>
-        </div>
 
         <div class="item item-body">
             <p>
                 {{post.desp}}
             </p>
-            <p>
-                <a href="#" class="subdued">{{post.up}} 顶</a>
-                <a href="#" class="subdued">{{post.down}} 踩</a>
-                <a href="#" class="subdued">{{post.commentCount}} 评论</a>
-            </p>
+        </div>
+
+        <div class="list card" ng-repeat="comment in comments">
+
+            <div ng-click="userInfo(comment.userId)" 
+            class="item item-avatar">
+                <img ng-src="{{post.authAvatar|avatar:'male'}}">
+                <h2>{{comment.userName}}</h2>
+                <p>{{comment.createAt|timeAgo}}</p>
+            </div>
+
+            <div class="item item-body">
+                <p>
+                    {{comment.content}}
+                </p>
+                
+            </div>
         </div>
     </ion-content>
 </ion-view>
-<script id="my-modal.html" type="text/ng-template">
+<script id="comment-modal.html" type="text/ng-template">
     <ion-modal-view>
         <ion-header-bar class="bar-dark">
             <h1 class="title">{{post.desp}}</h1>
-            <button class="button button-clear" ng-click="closeCommentModel()">
-                关闭
+            <button class="button button-clear icon ion-close" ng-click="closeCommentModel()">
             </button>
         </ion-header-bar>
         <ion-content class="padding">
-            <textarea placeholder="请创建描述" class="topcoat-textarea" >
+            <textarea placeholder="请创建描述" class="topcoat-textarea" 
+            ng-model="commentForm.content">
             </textarea>
             <button class="button button-block button-stable" ng-click="comment()">
             发布</button>

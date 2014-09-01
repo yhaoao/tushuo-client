@@ -1,0 +1,10 @@
+<ion-view title="参与话题">
+    <ion-content class="has-header">
+        <ul class="list">
+            <li class="item" ng-repeat="post in posts" 
+            ng-click="postDetail(post._id)">
+                {{post.desp}}            
+            </li>
+        </ul>
+    </ion-content>
+</ion-view>

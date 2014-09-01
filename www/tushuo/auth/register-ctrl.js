@@ -19,8 +19,8 @@ angular.module('starter.controllers.register', [])
 				if (result.err !== 0) {
 					Util.toast(result.msg);
 				} else {
+					User.setUserId(result.data._id);
 					User.setUser(result.data).then(function() {
-						Auth.setAuth();
 						$state.go('tab.main');
 					});
 				}

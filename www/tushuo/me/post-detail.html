@@ -1,0 +1,26 @@
+<ion-view title="{{post.desp}}">
+    <ion-content class="has-header padding">
+
+        <div class="item item-body">
+            <p>
+                {{post.desp}}
+            </p>
+        </div>
+
+        <div class="list card" ng-repeat="comment in post.comments">
+
+            <div  class="item item-avatar">
+                <img ng-src="{{post.authAvatar|avatar:'male'}}">
+                <h2>{{comment.userName}}</h2>
+                <p>{{comment.createAt|timeAgo}}</p>
+            </div>
+
+            <div class="item item-body">
+                <p>
+                    {{comment.content}}
+                </p>
+                
+            </div>
+        </div>
+    </ion-content>
+</ion-view>
