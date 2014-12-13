@@ -1,42 +1,29 @@
 angular.module('starter.controllers.main', [])
 
-.controller('MainCtrl', function($scope, $state, Post, Util) {
-	var updatePosts=function(state){
-		switch (state) {
-			case 'hotest':
-				return Post.getHotestPosts().then(function(posts) {
-					$scope.posts = posts;
-				});
-				break;
-			case 'latest':
-				return Post.getLatestPosts().then(function(posts) {
-					$scope.posts = posts;
-				});
-				break;
+.controller('MainCtrl', function($scope, $state, $ionicScrollDelegate, $ionicPopup, Post, Util) {
 
-			case 'nearby':
-				return Post.getNearbyPosts().then(function(posts) {
-					$scope.posts = posts;
-				});
-				break;
+	$scope.$watch('state', function(state) {
+		if (state) {
+			Post.getPosts(state).then(function(posts) {
+				$scope.posts = posts;
+			});
 		}
-	};
+	});
 
-	$scope.changeState = function(state) {
-		$scope.state = state;
-		updatePosts(state);
-	};
+	$scope.state = Post.getStateCache();
 
-	$scope.changeState('hotest');
 
 	$scope.refresh = function() {
-		updatePosts($scope.state).then(function(){
+		Post.getPosts($scope.state,true).then(function(posts) {
+			$scope.posts = posts;
 			$scope.$broadcast('scroll.refreshComplete');
 		});
 
 	};
 
+
 	$scope.userInfo = function(id) {
+		Post.setStateCache($scope.state);
 		$state.go('tab.userInfo', {
 			id: id
 		});
@@ -55,8 +42,6 @@ angular.module('starter.controllers.main', [])
 				Post.setVoted(id);
 			}
 		});
-
-
 	};
 
 	$scope.down = function(id) {
@@ -72,6 +57,7 @@ angular.module('starter.controllers.main', [])
 	};
 
 	$scope.comment = function(id) {
+		Post.setStateCache($scope.state);
 		$state.go('tab.postDetail', {
 			id: id
 		});

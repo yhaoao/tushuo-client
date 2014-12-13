@@ -1,5 +1,6 @@
 angular.module('starter.controllers', [
 	'starter.controllers.global',
+	'starter.controllers.tab',
 	'starter.controllers.login',
 	'starter.controllers.register',
 	'starter.controllers.main',

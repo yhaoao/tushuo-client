@@ -3,4 +3,9 @@
 		top: 0;
 	}
 	background: #efefef;
+	select{
+		-webkit-appearance: none;
+    	-moz-appearance: none;
+    	appearance: none;
+	}
 }

@@ -10,6 +10,7 @@
             <p>
                 {{post.desp}}
             </p>
+            <img class="full-image" ng-src="{{post.img}}">
         </div>
 
         <div class="list card" ng-repeat="comment in comments">
@@ -33,6 +34,9 @@
 <script id="comment-modal.html" type="text/ng-template">
     <ion-modal-view>
         <ion-header-bar class="bar-dark">
+            <button class="button button-clear" ng-click="addComment()">
+                评论
+            </button>
             <h1 class="title">{{post.desp}}</h1>
             <button class="button button-clear icon ion-close" ng-click="closeCommentModel()">
             </button>
@@ -41,8 +45,13 @@
             <textarea placeholder="请创建描述" class="topcoat-textarea" 
             ng-model="commentForm.content">
             </textarea>
-            <button class="button button-block button-stable" ng-click="comment()">
-            发布</button>
+            <div class="list card" ng-show="commentForm.img">
+                <div class="item item-image">
+                    <img ng-src="{{post.img}}">
+                </div>
+            </div>
+            <button class="button button-block button-stable" ng-show="!commentForm.img" ng-click="addImg()">
+            添加图片</button>
         </ion-content>
     </ion-modal-view>
 </script>

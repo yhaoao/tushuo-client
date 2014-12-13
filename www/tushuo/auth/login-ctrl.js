@@ -17,6 +17,8 @@ angular.module('starter.controllers.login', [])
 				User.setUser(result.data).then(function() {
 					$state.go('tab.main');
 				});
+			},function(error){
+				Util.toast(error.data.msg);
 			});
 		}
 	}

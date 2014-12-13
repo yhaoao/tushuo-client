@@ -1,7 +1,15 @@
 <ion-view title="发布">
+    <ion-nav-buttons side="right">
+        <button class="button icon button-clear ion-ios7-paperplane-outline" ng-click="pub()"></button>
+    </ion-nav-buttons>
     <ion-content class="has-header padding">
         <textarea placeholder="请创建描述" class="topcoat-textarea" ng-model="post.desp">
         </textarea>
-        <button class="button button-block button-stable" ng-click="pub()">发布</button>
+        <div class="list card" ng-show="post.img">
+            <div class="item item-image">
+                <img ng-src="{{post.img}}">
+            </div>
+        </div>
+        <button class="button button-block button-stable" ng-hide="image" ng-click="addImg()">添加图片</button>
     </ion-content>
 </ion-view>

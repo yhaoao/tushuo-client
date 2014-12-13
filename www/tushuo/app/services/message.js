@@ -1,32 +1,32 @@
 angular.module('starter.services.message', [])
 
-.factory('Message', function($ionicLoading,$http) {
+.factory('Message', function($ionicLoading, $http, HOST) {
 	var Message = {
 		sendMessage: function(userId, content) {
-			return $http.post('/message',{
-				userId:userId,
-				content:content
-			}).then(function(result){
+			return $http.post(HOST + '/message', {
+				userId: userId,
+				content: content
+			}).then(function(result) {
 				return result.data;
-			}).then(function(result){
-				if(result.err===0){
+			}).then(function(result) {
+				if (result.err === 0) {
 					return true;
-				}else{
+				} else {
 					return false;
 				}
 			});
 		},
-		getMessages:function(){
-			return $http.get('/message')
-			.then(function(result){
-				return result.data;
-			}).then(function(result){
-				if(result.err===0){
+		getMessages: function() {
+			return $http.get(HOST + '/message')
+				.then(function(result) {
 					return result.data;
-				}else{
-					return null;
-				}
-			});
+				}).then(function(result) {
+					if (result.err === 0) {
+						return result.data;
+					} else {
+						return null;
+					}
+				});
 		}
 
 	}

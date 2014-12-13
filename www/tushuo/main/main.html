@@ -1,17 +1,5 @@
-<ion-view class="main-content" title="图说" hide-nav-bar="true">
-    <div class="tabs-striped tabs-top tabs-background-dark tabs-color-light">
-        <div class="tabs">
-            <a class="tab-item" ng-class="{active:state==='hotest'}" ng-click="changeState('hotest')" href="#">
-                <strong>最热</strong>
-            </a>
-            <a class="tab-item" ng-class="{active:state==='latest'}" ng-click="changeState('latest')" href="#">
-                <strong>最新</strong>
-            </a>
-            <a class="tab-item" ng-class="{active:state==='nearby'}" ng-click="changeState('nearby')" href="#">
-                <strong>附近</strong>
-            </a>
-        </div>
-    </div>
+<ion-view class="main-content" title="图说">
+
     <ion-content class="has-header">
         <ion-refresher on-refresh="refresh()">
         </ion-refresher>
@@ -24,6 +12,7 @@
             </div>
 
             <div class="item item-body">
+                <img class="full-image" ng-src="{{post.img}}">
                 <p>
                     {{post.desp}}
                 </p>
@@ -34,7 +23,7 @@
                 </p>
             </div>
 
-            <div class="item tabs tabs-secondary tabs-icon-left">
+            <div class="item tabs tabs-secondary tabs-light tabs-icon-left">
                 <a class="tab-item" href="#" ng-click="up(post._id)">
                     <i class="icon ion-thumbsup"></i>
                     顶

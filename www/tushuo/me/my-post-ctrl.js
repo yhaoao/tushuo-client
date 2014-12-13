@@ -1,7 +1,7 @@
 angular.module('starter.controllers.myPost', [])
 
 .controller('MyPostCtrl', function($scope,$state, Post) {
-	Post.getMyPosts().then(function(posts) {
+	Post.getPosts('my').then(function(posts) {
 		$scope.posts = posts;
 	});
 

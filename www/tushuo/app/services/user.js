@@ -1,23 +1,23 @@
 angular.module('starter.services.user', [])
 
-.factory('User', function($localForage, $http,$window) {
+.factory('User', function($http, HOST,$window) {
 	var User = {
 		setUser: function(user) {
-			return $localForage.setItem('user', user);
+			return $window.localStorage.setItem('user', JSON.stringify(user));
 		},
-		setUserId:function(userId){
+		setUserId: function(userId) {
 			$window.localStorage.setItem('userId', userId);
 		},
-		getUserId:function(userId){
+		getUserId: function(userId) {
 			return $window.localStorage.getItem('userId');
 		},
 		getUser: function() {
-			return $localForage.getItem('user');
+			return JSON.parse($window.localStorage.getItem('user'));
 		},
 		updateUser: function(updateInfo) {
-			return $http.put('/user', 
-					updateInfo
-				).then(function() {
+			return $http.put(HOST + '/user',
+				updateInfo
+			).then(function() {
 				User.getUser().then(function(user) {
 					return _.assign(user, updateInfo);
 				}).then(function(user) {
@@ -25,18 +25,18 @@ angular.module('starter.services.user', [])
 				});
 			});
 		},
-		getUserInfo:function(id){
-			return $http.get('/user/'+id)
-			.then(function(result){
-				return result.data;
-			})
-			.then(function(result){
-				if(result.err===0){
+		getUserInfo: function(id) {
+			return $http.get(HOST + '/user/' + id)
+				.then(function(result) {
 					return result.data;
-				}else{
-					return null;
-				}
-			});
+				})
+				.then(function(result) {
+					if (result.err === 0) {
+						return result.data;
+					} else {
+						return null;
+					}
+				});
 		}
 
 	}

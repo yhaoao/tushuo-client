@@ -1,6 +1,6 @@
 angular.module('starter.services.auth', [])
 
-.factory('Auth', function($localForage, $window, $http, $localForage, Util) {
+.factory('Auth', function( $window, $http, Util,HOST) {
 	var Auth = {
 		isAuth: function() {
 			return $window.localStorage.getItem('auth') && $window.localStorage.getItem('auth') === 'true';
@@ -20,7 +20,7 @@ angular.module('starter.services.auth', [])
 				birthday: birthday
 			};
 
-			return $http.post('/register', registerForm).then(function(result) {
+			return $http.post(HOST+'/register', registerForm).then(function(result) {
 				Auth.setAuth();
 				return result.data;
 			});
@@ -30,19 +30,18 @@ angular.module('starter.services.auth', [])
 				email: email,
 				password: password
 			};
-			return $http.post('/login', loginForm).then(function(result) {
+			return $http.post(HOST+'/login', loginForm).then(function(result) {
 				Auth.setAuth();
 				return result.data;
 			});
 		},
 		logout: function() {
-			return $http.get('/logout').then(function(result) {
+			return $http.get(HOST+'/logout').then(function(result) {
 				Auth.reset();
 				return result.data;
 			});
 		},
 		reset: function() {
-			$localForage.clear();
 			$window.localStorage.clear();
 			Auth.registerUser = {
 				gender: 'male'

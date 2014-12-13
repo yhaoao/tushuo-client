@@ -7657,9 +7657,13 @@ a.button {
   background: #efefef; }
   .main-content .tabs-top .tabs {
     top: 0; }
+  .main-content select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none; }
 
 .me-content .basic-info {
-  background: url('/img/me-background.jpeg');
+  background-image: url('../img/me-background.jpeg');
   background-size: 100%;
   padding-top: 60px; }
 .me-content .basic-info-desp {
@@ -7669,8 +7673,8 @@ a.button {
 .me-content .bouns-info .input-label {
   color: gray; }
 .me-content .avatar {
-  width: 100%;
-  height: 100%; }
+  width: 80px;
+  height: 80px; }
 
 .edit-me-content .avatar-container {
   width: 25%; }
