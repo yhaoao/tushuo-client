@@ -2,9 +2,7 @@ angular.module('starter.controllers.me', [])
 
 .controller('MeCtrl', function($scope, $ionicPopover, $state, Auth, Util,User) {
 
-    User.getUser().then(function(user){ 
-        $scope.user=user;
-    });
+    $scope.user= User.getUser();
 
 
     $ionicPopover.fromTemplateUrl('more-popover.html', {

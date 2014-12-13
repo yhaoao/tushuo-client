@@ -14,9 +14,10 @@ angular.module('starter.controllers.login', [])
 		} else {
 			Auth.login(email, password).then(function(result) {
 				User.setUserId(result.data._id);
-				User.setUser(result.data).then(function() {
-					$state.go('tab.main');
-				});
+				User.setUser(result.data);
+					
+				$state.go('tab.main');
+
 			},function(error){
 				Util.toast(error.data.msg);
 			});

@@ -3,10 +3,8 @@ angular.module('starter.controllers.editMe', [])
 .controller('EditMeCtrl', function($scope, $state, $ionicActionSheet, $cordovaFile, $cordovaCamera, IMGHOST, Util, User) {
 	$scope.editMeForm = {};
 
-	User.getUser().then(function(user) {
-		$scope.user = user;
-		$scope.avatar=$scope.user.avatar;
-	});
+	$scope.user = User.getUser();
+	$scope.avatar=$scope.user.avatar;
 
 	$scope.save = function() {
 		User.updateUser(

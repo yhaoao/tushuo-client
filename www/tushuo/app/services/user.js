@@ -18,11 +18,10 @@ angular.module('starter.services.user', [])
 			return $http.put(HOST + '/user',
 				updateInfo
 			).then(function() {
-				User.getUser().then(function(user) {
-					return _.assign(user, updateInfo);
-				}).then(function(user) {
-					return User.setUser(user);
-				});
+				var user=User.getUser();
+				user=_.assign(user, updateInfo);
+				User.setUser(user);
+				
 			});
 		},
 		getUserInfo: function(id) {

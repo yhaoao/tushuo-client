@@ -25,30 +25,6 @@ angular.module('starter.services.post', [])
 				}
 			});
 		},
-		// getMyPosts: function() {
-		// 	return $http.get(HOST + '/post?state=my')
-		// 		.then(function(result) {
-		// 			return result.data;
-		// 		}).then(function(result) {
-		// 			if (result.err === 0) {
-		// 				return result.data;
-		// 			} else {
-		// 				return null;
-		// 			}
-		// 		});
-		// },
-		// getCommentPosts: function() {
-		// 	return $http.get(HOST + '/post?state=comment')
-		// 		.then(function(result) {
-		// 			return result.data;
-		// 		}).then(function(result) {
-		// 			if (result.err === 0) {
-		// 				return result.data;
-		// 			} else {
-		// 				return null;
-		// 			}
-		// 		});
-		// },
 		getPosts: function(state,update) {
 			var promise = $http.get(HOST + '/post?state=' + state)
 				.then(function(result) {

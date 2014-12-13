@@ -20,9 +20,8 @@ angular.module('starter.controllers.register', [])
 					Util.toast(result.msg);
 				} else {
 					User.setUserId(result.data._id);
-					User.setUser(result.data).then(function() {
-						$state.go('tab.main');
-					});
+					User.setUser(result.data);
+					$state.go('tab.main');
 				}
 			});
 		}
